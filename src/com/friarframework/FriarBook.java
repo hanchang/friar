@@ -15,7 +15,9 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
@@ -188,5 +190,16 @@ public class FriarBook extends Activity {
 			}
 			System.out.println(currentPage + " " + url);
 		}
+
+        @Override
+		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+	        if (url != null && url.startsWith("http://")) {
+	            view.getContext().startActivity(
+	                new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+	            return true;
+	        } else {
+	            return false;
+	        }
+	    }
 	}
 }
