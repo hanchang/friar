@@ -101,7 +101,7 @@ public class FriarBook extends Activity {
 		
 		webView = (WebView) findViewById(R.id.webview);
 		webView.setWebViewClient(new FriarWebViewClient());
-		webView.getSettings().setJavaScriptEnabled(false);
+		webView.getSettings().setJavaScriptEnabled(true);
 
 		gestureDetector = new GestureDetector(gestureListener);
 		webView.setOnTouchListener(new View.OnTouchListener() {
