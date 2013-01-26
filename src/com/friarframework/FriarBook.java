@@ -24,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector.SimpleOnGestureListener;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -102,8 +103,9 @@ public class FriarBook extends Activity {
 		webView = (WebView) findViewById(R.id.webview);
 		webView.setWebViewClient(new FriarWebViewClient());
 		webView.getSettings().setJavaScriptEnabled(true);
+		webView.getSettings().setPluginState(WebSettings.PluginState.ON);
 
-		gestureDetector = new GestureDetector(gestureListener);
+		gestureDetector = new GestureDetector(getBaseContext(), gestureListener);
 		webView.setOnTouchListener(new View.OnTouchListener() {
 			public boolean onTouch(View wv, MotionEvent event) {
 				gestureDetector.onTouchEvent(event);
